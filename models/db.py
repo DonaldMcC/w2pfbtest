@@ -162,14 +162,10 @@ class FaceBookAccount(OAuthAccount):
             else:
                 email = user['email']
 
-            return dict(first_name='test',
-                        last_name='surname',
+            return dict(first_name=user['first_name'],
+                        last_name=user['last_name'],
                         username=username,
                         email='%s' % (email))
-            #return dict(first_name=user['first_name'],
-            #            last_name=user['last_name'],
-            #            username=username,
-            #            email='%s' % (email))
 
 
 ## use the above class to build a new login form
