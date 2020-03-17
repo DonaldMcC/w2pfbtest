@@ -150,6 +150,7 @@ class FaceBookAccount(OAuthAccount):
             session.token = None
             self.graph = None
 
+        print(user)
         if user:
             if not user.has_key('username'):
                 username = user['id']
@@ -161,10 +162,14 @@ class FaceBookAccount(OAuthAccount):
             else:
                 email = user['email']
 
-            return dict(first_name=user['first_name'],
-                        last_name=user['last_name'],
+            return dict(first_name='test',
+                        last_name='surname',
                         username=username,
                         email='%s' % (email))
+            #return dict(first_name=user['first_name'],
+            #            last_name=user['last_name'],
+            #            username=username,
+            #            email='%s' % (email))
 
 
 ## use the above class to build a new login form
