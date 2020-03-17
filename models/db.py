@@ -129,7 +129,7 @@ class FaceBookAccount(OAuthAccount):
     def __init__(self):
         OAuthAccount.__init__(self, None, FB_CLIENT_ID, FB_CLIENT_SECRET,
                               self.AUTH_URL, self.TOKEN_URL,
-                              scope='email,user_about_me,user_activities, user_birthday, user_education_history, user_groups, user_hometown, user_interests, user_likes, user_location, user_relationships, user_relationship_details, user_religion_politics, user_subscriptions, user_work_history, user_photos, user_status, user_videos, publish_actions, friends_hometown, friends_location,friends_photos',
+                              scope='email,user_about_me',
                               state="auth_provider=facebook",
                               display='popup')
         self.graph = None
