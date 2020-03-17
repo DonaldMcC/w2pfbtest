@@ -145,12 +145,11 @@ class FaceBookAccount(OAuthAccount):
 
         user = None
         try:
-            user = self.graph.get_object("me")
+            user = self.graph.get_object("me",fields='first_name, last_name')
         except GraphAPIError, e:
             session.token = None
             self.graph = None
 
-        print(user)
         if user:
             if not user.has_key('username'):
                 username = user['id']
