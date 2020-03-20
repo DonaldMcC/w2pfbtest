@@ -7,6 +7,7 @@
 import os
 from gluon.contrib.appconfig import AppConfig
 from gluon.tools import Auth
+from gluon.contrib.login_methods.extended_login_form import ExtendedLoginForm
 
 # -------------------------------------------------------------------------
 # This scaffolding model makes your app work on Google App Engine too
@@ -39,6 +40,7 @@ if useappconfig:
     from gluon.contrib.appconfig import AppConfig
     # once in production, remove reload=True to gain full speed
     configuration = AppConfig(reload=False)
+    login_method = configuration.get('login.logon_method')
 else:
     debug = False
     backend = 'SimpleBackend'
@@ -116,9 +118,9 @@ try:
     import json
 except ImportError:
     from gluon.contrib import simplejson as json
+
 from facebook import GraphAPI, GraphAPIError
 from gluon.contrib.login_methods.oauth20_account import OAuthAccount
-
 
 ## extend the OAUthAccount class
 class FaceBookAccount(OAuthAccount):
@@ -167,14 +169,7 @@ class FaceBookAccount(OAuthAccount):
                         email='%s' % (email))
 
 
-## use the above class to build a new login form
 auth.settings.login_form = FaceBookAccount()
-
-
-
-
-
-
 # -------------------------------------------------------------------------
 # create all tables needed by auth, maybe add a list of extra fields
 # -------------------------------------------------------------------------
