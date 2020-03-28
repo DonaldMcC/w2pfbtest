@@ -172,7 +172,7 @@ class FaceBookAccount(OAuthAccount):
                         email='%s' % (email))
 
 
-#auth.settings.login_form = FaceBookAccount()
+auth.settings.login_form = FaceBookAccount()
 # -------------------------------------------------------------------------
 # create all tables needed by auth, maybe add a list of extra fields
 # -------------------------------------------------------------------------
