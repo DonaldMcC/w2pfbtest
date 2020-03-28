@@ -162,6 +162,9 @@ class FaceBookAccount(OAuthAccount):
                 email = '%s.fakemail' % (user['id'])
             else:
                 email = user['email']
+            w2puser = db(db.auth_user.registration_id == user['id']).select().first()
+            if w2puser.registration_key == 'pending':
+                return None
 
             return dict(first_name=user['first_name'],
                         last_name=user['last_name'],
@@ -169,7 +172,7 @@ class FaceBookAccount(OAuthAccount):
                         email='%s' % (email))
 
 
-auth.settings.login_form = FaceBookAccount()
+#auth.settings.login_form = FaceBookAccount()
 # -------------------------------------------------------------------------
 # create all tables needed by auth, maybe add a list of extra fields
 # -------------------------------------------------------------------------
