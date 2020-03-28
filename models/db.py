@@ -162,7 +162,7 @@ class FaceBookAccount(OAuthAccount):
                 email = '%s.fakemail' % (user['id'])
             else:
                 email = user['email']
-            w2puser = db(db.auth_user.registration_id == user['id']).select().first()
+            w2puser = db(db.auth_user.registration_id == user['email']).select().first()
             if w2puser.registration_key == 'pending':
                 return None
 
